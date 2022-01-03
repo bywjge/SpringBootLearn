@@ -30,6 +30,11 @@ public class TaskController {
     }
 
 
+//    @GetMapping("/tasks/{id}")
+//    public ResponseEntity<Task> getTask(@PathVariable int id) {
+//        return new ResponseEntity<>(taskList.get(id), HttpStatus.ACCEPTED) ;
+//    }
+
     @GetMapping("/tasks/{id}")
     public ResponseEntity<Task> getTask(@PathVariable int id) {
         return new ResponseEntity<>(taskList.get(id), HttpStatus.ACCEPTED) ;
