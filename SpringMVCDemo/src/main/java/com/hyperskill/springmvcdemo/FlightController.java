@@ -3,6 +3,7 @@ package com.hyperskill.springmvcdemo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,6 +25,9 @@ public class FlightController {
 
     @GetMapping("/flights/{id}")
     public static FlightInfo getFlightInfo(@PathVariable int id) {
+        if (id >= flightInfoList.size()) {
+            throw new FlightNotFoundException("Flight not found for id =" + id);
+        }
         FlightInfo flightInfo = flightInfoList.get(id);
         if (Objects.equals(flightInfo.getFrom(), "Berlin Schönefeld")) {
 //            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Berlin Schönefeld is closed for service today");
@@ -32,4 +36,13 @@ public class FlightController {
         return flightInfo;
     }
 
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    static
+    class FlightNotFoundException extends RuntimeException {
+
+        public FlightNotFoundException(String cause) {
+            super(cause);
+        }
+    }
 }
