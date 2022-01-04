@@ -1,5 +1,7 @@
 package com.hyperskill.springmvcdemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+//@Component
 public class UserInfoController {
 
 //    @PostMapping("/user")
@@ -36,5 +39,7 @@ public class UserInfoController {
     public List<UserInfo> getUser() {
         return userList1;
     }
+
+
 
 }
