@@ -1,5 +1,9 @@
 package com.hyperskill.springmvcdemo;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Test {
     public static void main(String[] args) {
         String endRegex = "The End\\.";
@@ -13,5 +17,8 @@ public class Test {
 
         System.out.println("The End.".matches(endRegex));
         System.out.println("The End?".matches(endRegex));
+
+        Map<String, String> hashmap = new HashMap<>();
+        Collections.synchronizedMap(hashmap);
     }
 }
