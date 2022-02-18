@@ -10,27 +10,35 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "user")
+@Entity
+@Table(name = "user")
 public class User {
 
     @Id
     @Column
-    private long userId;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column
     private String username;
 
+//    @Column(name = "firstName")
     @Column
-    private  String password;
+    private String firstName;
 
+//    @Column(name = "lastName")
     @Column
-    private boolean enabled;
-
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserDetails user_details;
-
+    private String lastName;
+//
+//    @Column
+//    private  String password;
+//
+//    @Column
+//    private boolean enabled;
+//
+//    @OneToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private UserDetails user_details;
 
 
 }
