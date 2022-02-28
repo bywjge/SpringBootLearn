@@ -33,8 +33,11 @@ public class UserController {
     }
 
     @GetMapping("/user1/getInfoName/{name}")
-    public User getUser(@PathVariable String name) {
-        return userService.findUserByUsername(name);
+    public List<User> getUser(@PathVariable String name) {
+//        return userService.findUserByUsername(name);
+        List<User> result = userService.findUserByUsernameContains(name);
+//        System.out.println("结果长度：" + result.size());
+        return result;
     }
 
 

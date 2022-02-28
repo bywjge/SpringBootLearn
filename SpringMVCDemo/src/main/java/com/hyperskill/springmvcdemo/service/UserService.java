@@ -5,6 +5,8 @@ import com.hyperskill.springmvcdemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -19,13 +21,15 @@ public class UserService {
         return userRepository.findUserById(id);
     }
 
-    public User findUserByUsername(String username) {
-        return userRepository.findUserByUsername(username);
+    public List<User> findUserByUsernameContains(String username) {
+        return userRepository.findUserByUsernameContains(username);
     }
 
 
     public User save(User toSave) {
         return userRepository.save(toSave);
     }
+
+
 
 }
